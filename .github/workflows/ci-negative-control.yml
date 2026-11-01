@@ -1,0 +1,15 @@
+name: Synthetic CI negative control
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  expected-failure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail on synthetic marker
+        run: exit 1
