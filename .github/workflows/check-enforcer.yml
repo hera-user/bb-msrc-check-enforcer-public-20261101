@@ -1,0 +1,19 @@
+name: Owned check-enforcer fixture
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions: {}
+
+jobs:
+  event-handler:
+    runs-on: ubuntu-latest
+    permissions:
+      statuses: write
+      pull-requests: read
+      checks: read
+    steps:
+      - uses: Azure/azure-sdk-actions@6a2d61414e790705ab24370421c0a5b04b65de53
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
